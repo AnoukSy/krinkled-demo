@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Simpsons' Chat</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <!-- Step progress bar -->
+    <div class="progress-bar" role="progressbar" aria-label="Step 1 of 3">
+      <div class="progress-step progress-step--done"></div>
+      <div class="progress-step"></div>
+      <div class="progress-step"></div>
+    </div>
+
+    <!-- Main content card -->
+    <main class="content-card">
+
+      <h1 class="page-title">The Simpsons' Chat</h1>
+
+      <!-- WhatsApp-style chat preview -->
+      <section class="chat-preview" aria-label="WhatsApp chat preview">
+        <!-- Chat header -->
+        <div class="chat-header">
+          <button class="chat-back" aria-label="Back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <div class="chat-avatar" aria-hidden="true">
+            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="20" fill="#FFD700"/>
+              <circle cx="20" cy="16" r="7" fill="#F4A621"/>
+              <ellipse cx="20" cy="35" rx="13" ry="10" fill="#F4A621"/>
+              <!-- Bart-like hair spikes -->
+              <polygon points="14,10 16,4 18,10" fill="#FFD700"/>
+              <polygon points="18,9 20,3 22,9" fill="#FFD700"/>
+              <polygon points="22,10 24,4 26,10" fill="#FFD700"/>
+            </svg>
+          </div>
+
+          <div class="chat-info">
+            <span class="chat-name">The Simpsons</span>
+            <span class="chat-members">Homer, Monda, Marge, Clancy…</span>
+          </div>
+
+          <div class="chat-actions">
+            <button class="chat-action-btn" aria-label="Video call">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
+            </button>
+            <button class="chat-action-btn" aria-label="Voice call">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.18 6.18l.89-.89a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Chat messages -->
+        <div class="chat-body">
+          <!-- Incoming message -->
+          <div class="chat-message chat-message--incoming">
+            <div class="chat-message__avatar" aria-hidden="true">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="16" fill="#C8A97A"/>
+                <circle cx="16" cy="13" r="5.5" fill="#A07850"/>
+                <ellipse cx="16" cy="28" rx="10" ry="8" fill="#A07850"/>
+              </svg>
+            </div>
+            <div class="chat-message__bubble">
+              <span class="chat-message__sender">Jackie Bouvier</span>
+              <p class="chat-message__text">Very impressive! What is it?</p>
+              <span class="chat-message__time">12.41</span>
+            </div>
+          </div>
+
+          <!-- Image message -->
+          <div class="chat-message chat-message--incoming chat-message--images">
+            <div class="chat-message__avatar chat-message__avatar--hidden" aria-hidden="true"></div>
+            <div class="chat-message__images">
+              <figure class="chat-image">
+                <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" aria-label="Bart Simpson with glasses">
+                  <!-- Background room -->
+                  <rect width="120" height="100" fill="#8B6914"/>
+                  <rect x="0" y="65" width="120" height="35" fill="#5C4A1E"/>
+                  <!-- Bart's body -->
+                  <rect x="40" y="55" width="40" height="30" fill="#E8C547" rx="3"/>
+                  <!-- Red shirt -->
+                  <rect x="38" y="58" width="44" height="20" fill="#CC2200" rx="2"/>
+                  <!-- Bart's head -->
+                  <ellipse cx="60" cy="42" rx="18" ry="15" fill="#FFD700"/>
+                  <!-- Spiky hair -->
+                  <polygon points="42,32 45,22 48,32" fill="#FFD700"/>
+                  <polygon points="48,30 52,20 56,30" fill="#FFD700"/>
+                  <polygon points="55,29 59,19 63,29" fill="#FFD700"/>
+                  <polygon points="62,30 66,21 70,30" fill="#FFD700"/>
+                  <polygon points="68,32 71,24 74,33" fill="#FFD700"/>
+                  <!-- Eyes with glasses -->
+                  <rect x="46" y="38" width="12" height="8" rx="2" fill="white" stroke="#333" stroke-width="1.5"/>
+                  <rect x="62" y="38" width="12" height="8" rx="2" fill="white" stroke="#333" stroke-width="1.5"/>
+                  <line x1="58" y1="42" x2="62" y2="42" stroke="#333" stroke-width="1.5"/>
+                  <circle cx="52" cy="42" r="2.5" fill="#3355AA"/>
+                  <circle cx="68" cy="42" r="2.5" fill="#3355AA"/>
+                  <!-- Nose & mouth -->
+                  <ellipse cx="63" cy="48" rx="2" ry="1.5" fill="#E8A000"/>
+                  <path d="M53 52 Q60 56 67 52" stroke="#333" stroke-width="1.5" fill="none"/>
+                  <!-- Ear -->
+                  <ellipse cx="42" cy="43" rx="3" ry="4" fill="#FFD700"/>
+                </svg>
+              </figure>
+              <figure class="chat-image">
+                <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" aria-label="Bart Simpson with glasses smiling">
+                  <!-- Background room -->
+                  <rect width="120" height="100" fill="#7A5C10"/>
+                  <rect x="0" y="65" width="120" height="35" fill="#4A3A14"/>
+                  <!-- Bart's body -->
+                  <rect x="40" y="55" width="40" height="30" fill="#E8C547" rx="3"/>
+                  <!-- Red shirt -->
+                  <rect x="38" y="58" width="44" height="20" fill="#CC2200" rx="2"/>
+                  <!-- Bart's head -->
+                  <ellipse cx="60" cy="42" rx="18" ry="15" fill="#FFD700"/>
+                  <!-- Spiky hair -->
+                  <polygon points="42,32 45,22 48,32" fill="#FFD700"/>
+                  <polygon points="48,30 52,20 56,30" fill="#FFD700"/>
+                  <polygon points="55,29 59,19 63,29" fill="#FFD700"/>
+                  <polygon points="62,30 66,21 70,30" fill="#FFD700"/>
+                  <polygon points="68,32 71,24 74,33" fill="#FFD700"/>
+                  <!-- Eyes with glasses -->
+                  <rect x="46" y="38" width="12" height="8" rx="2" fill="white" stroke="#333" stroke-width="1.5"/>
+                  <rect x="62" y="38" width="12" height="8" rx="2" fill="white" stroke="#333" stroke-width="1.5"/>
+                  <line x1="58" y1="42" x2="62" y2="42" stroke="#333" stroke-width="1.5"/>
+                  <circle cx="52" cy="42" r="2.5" fill="#3355AA"/>
+                  <circle cx="68" cy="42" r="2.5" fill="#3355AA"/>
+                  <!-- Nose & mouth (smiling more) -->
+                  <ellipse cx="63" cy="48" rx="2" ry="1.5" fill="#E8A000"/>
+                  <path d="M52 51 Q60 58 68 51" stroke="#333" stroke-width="1.5" fill="none"/>
+                  <!-- Ear -->
+                  <ellipse cx="42" cy="43" rx="3" ry="4" fill="#FFD700"/>
+                </svg>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <p class="stats-count">
+        <strong>2,356,678</strong> messages in 2025
+      </p>
+
+      <!-- Terminal log -->
+      <section class="terminal-log" aria-label="Chat message log">
+        <div class="terminal-log__content">
+          <p class="terminal-log__line">
+            <span class="terminal-log__timestamp">[01/01/25, 12:08:33 AM]</span>
+            <span class="terminal-log__author"> Homer Simpson:</span>
+            <span class="terminal-log__text"> Happy new year!!!! 🎉 🍺</span>
+          </p>
+          <p class="terminal-log__line">
+            <span class="terminal-log__timestamp">[01/01/25, 12:09:11 AM]</span>
+            <span class="terminal-log__author"> Marge Simpson:</span>
+            <span class="terminal-log__text"> Happy New Year everyone 🌺 Love from Springfield</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <button class="cta-btn" type="button">Write Their Story</button>
+
+    </main>
+  </div>
+</body>
+</html>
