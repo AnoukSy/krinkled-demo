@@ -54,10 +54,114 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--color-bg);
+  background: #ffffff;
   color: var(--color-text-primary);
   min-height: 100vh;
   line-height: 1.5;
+  overflow: hidden; /* prevent scroll bleed between screens */
+}
+
+/* ============================================================
+   Screen system — only the .screen--active screen is visible
+   ============================================================ */
+.screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Loading screens ─────────────────────────────────────────── */
+.screen--loading {
+  background: rgba(7, 141, 70, 0.9);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen--loading.screen--active {
+  display: flex;
+}
+
+/* Demo screen ─────────────────────────────────────────────── */
+.screen--demo {
+  background: var(--color-bg, #f5f5f5);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.screen--demo.screen--active {
+  display: block;
+}
+
+/* ============================================================
+   Loader layout (inside loading screens)
+   ============================================================ */
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 328px;
+  max-width: calc(100vw - 32px);
+}
+
+/* Sticker image */
+.loader__sticker {
+  width: 136px;
+  height: 130px;
+  object-fit: contain;
+  animation: wiggle 1.8s ease-in-out infinite;
+  /* Graceful fallback: hide broken-image icon if file not yet added */
+  min-height: 0;
+}
+
+/* Hide the browser's broken-image placeholder */
+.loader__sticker:not([src]),
+.loader__sticker[src=""] {
+  visibility: hidden;
+}
+
+/* Loading label */
+.loader__label {
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+  color: #ffffff;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 0;
+  margin-top: 0;
+}
+
+@media (min-width: 900px) {
+  .loader__label {
+    font-size: 25px;
+  }
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+
+/* Sticker wiggle */
+@keyframes wiggle {
+  0%        { transform: rotate(0deg)   scale(1); }
+  15%       { transform: rotate(-8deg)  scale(1.05); }
+  30%       { transform: rotate(0deg)   scale(1); }
+  45%       { transform: rotate(8deg)   scale(1.05); }
+  60%       { transform: rotate(0deg)   scale(1); }
+  100%      { transform: rotate(0deg)   scale(1); }
+}
+
+/* ============================================================
+   Demo screen: override body overflow for the scrollable page
+   (page-wrapper handles its own scroll via screen--demo)
+   ============================================================ */
+.screen--demo .page-wrapper {
+  min-height: 100%;
+  padding-bottom: var(--spacing-xl);
 }
 
 button {
@@ -534,5 +638,9 @@ figure {
   .chat-back,
   .chat-action-btn {
     transition: none;
+  }
+
+  .loader__sticker {
+    animation: none;
   }
 }
