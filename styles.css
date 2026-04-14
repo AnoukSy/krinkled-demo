@@ -2,18 +2,18 @@
    Design tokens
    ============================================================ */
 :root {
-  --green:       #078d46;
-  --green-dim:   rgba(7, 141, 70, 0.20);
-  --black:       #333333;
-  --white:       #ffffff;
-  --bg:          #fcfaf3;
+  --green:           #078d46;
+  --green-dim:       rgba(7, 141, 70, 0.20);
+  --black:           #333333;
+  --white:           #ffffff;
+  --bg:              #fcfaf3;
 
-  --font-serif:  'IBM Plex Serif', Georgia, serif;
-  --font-mono:   'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --font-serif:      'IBM Plex Serif', Georgia, serif;
+  --font-mono:       'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
 
-  --radius-card: 32px;
+  --radius-card:     32px;
   --radius-textarea: 16px;
-  --radius-btn:  24px;
+  --radius-btn:      24px;
 
   --sp-xs: 4px;
   --sp-sm: 8px;
@@ -41,7 +41,7 @@ body {
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
 /* ============================================================
-   Screen system â€” each screen fills the viewport
+   Screen system
    ============================================================ */
 .screen {
   position: fixed;
@@ -49,9 +49,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: var(--bg);
-  transition: opacity 0.4s ease;
   z-index: 10;
 }
 
@@ -60,6 +57,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: var(--bg);
   z-index: 5;
 }
 
@@ -70,20 +68,38 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ============================================================
    Loading screens
    ============================================================ */
+
+/* Figma: rgba(7,141,70,0.9) overlay on white background */
+.screen--loading {
+  background: rgba(7, 141, 70, 0.9);
+  /* Mobile: 25 vh from top = 160 px on Figma's 640 px mobile frame */
+  justify-content: flex-start;
+  padding-top: 25vh;
+}
+
+/* Tablet and above: true vertical centre */
+@media (min-width: 768px) {
+  .screen--loading {
+    justify-content: center;
+    padding-top: 0;
+  }
+}
+
 .loader-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sp-lg);
+  gap: 0;
 }
 
+/* Figma: 136 × 130 px */
 .loader-sticker {
-  width: 140px;
-  height: 140px;
+  width: 136px;
+  height: 130px;
   object-fit: contain;
 }
 
-/* wiggle animation */
+/* Wiggle */
 @keyframes wiggle {
   0%, 100% { transform: rotate(-4deg); }
   50%       { transform: rotate(4deg); }
@@ -94,21 +110,35 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transform-origin: bottom center;
 }
 
+/* Figma H5: 20 px / 32 px line-height, white, capitalize */
 .loader-label {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
-  color: var(--black);
-  letter-spacing: 0.01em;
+  font-size: 1.25rem;   /* 20 px */
+  font-weight: 400;
+  line-height: 2rem;    /* 32 px */
+  letter-spacing: 0;
+  color: var(--white);
+  text-transform: capitalize;
+  text-align: center;
 }
 
+/* Figma H4 on desktop: 25 px */
+@media (min-width: 1024px) {
+  .loader-label {
+    font-size: 1.5625rem; /* 25 px */
+  }
+}
+
+/* Fixed-width ellipsis — no layout shift when cycling . → .. → ... */
 .ellipsis {
   display: inline-block;
-  min-width: 1.5ch;
+  width: 1.5em;
   text-align: left;
+  overflow: hidden;
 }
 
 /* ============================================================
-   Demo screen â€” nav / progress
+   Demo screen — nav / progress
    ============================================================ */
 .demo-nav {
   width: 100%;
@@ -137,7 +167,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ============================================================
-   Demo screen â€” main content
+   Demo screen — main content
    ============================================================ */
 .demo-main {
   flex: 1;
@@ -152,7 +182,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .demo-title {
   font-family: var(--font-serif);
-  font-size: 1.5625rem; /* ~25px, matching H4 */
+  font-size: 1.5625rem;
   font-weight: 400;
   color: var(--black);
   text-align: center;
@@ -161,7 +191,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ============================================================
-   Demo body â€” stacked on mobile, side-by-side on desktop
+   Demo body — stacked mobile, side-by-side desktop
    ============================================================ */
 .demo-body {
   display: flex;
@@ -171,7 +201,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ============================================================
-   Preview column (WhatsApp image)
+   Preview column
    ============================================================ */
 .demo-preview-col {
   display: flex;
@@ -183,10 +213,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--white);
-  /* subtle green dashed border like Figma desktop, visible on both */
   border: 2px solid var(--green);
   box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-  aspect-ratio: 390 / 280; /* crop the preview nicely on mobile */
+  aspect-ratio: 390 / 280;
 }
 
 .demo-preview-img {
@@ -205,7 +234,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ============================================================
-   Scrollable textarea (dark chat log)
+   Scrollable chat log
    ============================================================ */
 .demo-textarea {
   background: var(--black);
@@ -213,15 +242,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: var(--radius-textarea);
   padding: var(--sp-md);
   overflow-y: auto;
-  /* On mobile: fixed height so it scrolls independently */
   height: 220px;
   flex-shrink: 0;
   cursor: text;
-  /* resize handle hint */
   position: relative;
 }
 
-/* Subtle resize grip (visual only, mirrors Figma) */
 .demo-textarea::after {
   content: '';
   position: absolute;
@@ -237,7 +263,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .demo-textarea__inner {
   font-family: var(--font-mono);
-  font-size: 0.8125rem; /* 13px */
+  font-size: 0.8125rem;
   line-height: 1.6;
   color: var(--white);
   white-space: pre-wrap;
@@ -249,10 +275,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   line-height: 1.6;
 }
 
-.demo-textarea__inner br {
-  display: block;
-  content: '';
-  margin-top: 0.5em;
+.demo-textarea__inner p:empty {
+  height: 0.8em;
 }
 
 /* ============================================================
@@ -285,7 +309,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ============================================================
-   Desktop (â‰¥ 700px)
+   Desktop (≥ 700 px)
    ============================================================ */
 @media (min-width: 700px) {
 
@@ -304,12 +328,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   }
 
   .demo-title {
-    font-size: 1.9375rem; /* ~31px, H3 */
-    text-align: center;
+    font-size: 1.9375rem;
     letter-spacing: -0.5px;
   }
 
-  /* Side-by-side layout */
   .demo-body {
     flex-direction: row;
     align-items: stretch;
@@ -327,7 +349,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     flex: 1;
     aspect-ratio: unset;
     height: 384px;
-    /* desktop: dashed border per Figma */
     border-style: dashed;
     border-width: 2px;
   }
@@ -336,7 +357,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     object-position: top center;
   }
 
-  /* Dark textarea fills right column */
   .demo-textarea {
     flex: 1;
     min-width: 0;
@@ -345,12 +365,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   }
 
   .demo-textarea__inner {
-    font-size: 0.875rem; /* 14px on desktop */
+    font-size: 0.875rem;
   }
 }
 
 /* ============================================================
-   Large desktop (â‰¥ 1100px)
+   Large desktop (≥ 1100 px)
    ============================================================ */
 @media (min-width: 1100px) {
   .demo-main {
