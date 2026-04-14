@@ -3,118 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Simpsons' Chat — Krinkled</title>
+  <title>Krinkled</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Serif&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- SCREEN 1 — Loader_01 -->
-  <div class="screen screen--loading" id="screen-load-1">
+  <!-- Screen 1 — Loader_01 -->
+  <div class="screen screen--loading" id="screen-1">
     <div class="loader-inner">
-      <img src="Assets/Loader_01.png" alt="" class="loader-sticker loader-sticker--wiggle" />
+      <img class="loader-sticker loader-sticker--wiggle" src="Assets/Loader_01.png" alt="" />
       <p class="loader-label">Loading Chat History<span class="ellipsis"></span></p>
     </div>
   </div>
 
-  <!-- SCREEN 2 — Loader_08 -->
-  <div class="screen screen--loading screen--hidden" id="screen-load-2">
+  <!-- Screen 2 — Loader_08 -->
+  <div class="screen screen--loading screen--hidden" id="screen-2">
     <div class="loader-inner">
-      <img src="Assets/Loader_08.png" alt="" class="loader-sticker loader-sticker--wiggle" />
+      <img class="loader-sticker loader-sticker--wiggle" src="Assets/Loader_08.png" alt="" />
       <p class="loader-label">Analysing Messages<span class="ellipsis"></span></p>
     </div>
   </div>
 
-  <!-- SCREEN 3 — Demo -->
-  <div class="screen screen--demo screen--hidden" id="screen-demo">
-
-    <nav class="demo-nav">
-      <div class="progress-bar">
-        <div class="progress-step progress-step--done"></div>
-        <div class="progress-step"></div>
-        <div class="progress-step"></div>
-      </div>
-    </nav>
-
-    <main class="demo-main">
-      <h1 class="demo-title">The Simpsons' Chat</h1>
-
-      <div class="demo-body">
-
-        <div class="demo-preview-col">
-          <div class="demo-preview-frame">
-            <img src="Assets/Demo_chat.png" alt="WhatsApp chat preview" class="demo-preview-img" />
-          </div>
-          <p class="demo-stats">2,356,678 messages in 2025</p>
-        </div>
-
-        <div class="demo-textarea" id="chat-log" tabindex="0">
-          <div class="demo-textarea__inner" id="chat-content"></div>
-        </div>
-
-      </div>
-
-      <button class="cta-btn" id="cta-write" type="button">Write Their Story</button>
-    </main>
-  </div>
-
-  <!-- SCREEN 4 — Loader_03 -->
-  <div class="screen screen--loading screen--hidden" id="screen-load-3">
-    <div class="loader-inner">
-      <img src="Assets/Loader_03.png" alt="" class="loader-sticker loader-sticker--wiggle" />
-      <p class="loader-label">Finding Themes<span class="ellipsis"></span></p>
-    </div>
-  </div>
-
-  <!-- SCREEN 5 — Loader_04 -->
-  <div class="screen screen--loading screen--hidden" id="screen-load-4">
-    <div class="loader-inner">
-      <img src="Assets/Loader_04.png" alt="" class="loader-sticker loader-sticker--wiggle" />
-      <p class="loader-label">Writing Chapters<span class="ellipsis"></span></p>
-    </div>
-  </div>
-
   <script>
-    const CHAT_LINES = [
-      "[01/01/25, 12:08:33 AM] Homer Simpson: Happy new year!!!! 🎉 🍺",
-      "[01/01/25, 12:09:11 AM] Marge Simpson: Happy New Year everyone 🌺 Love from Springfield",
-      "[01/01/25, 12:11:04 AM] Bart Simpson: Eat my shorts and happy new year 🛹",
-      "[01/01/25, 12:12:47 AM] Lisa Simpson: Wishing everyone a year of growth and wisdom 🎷✨",
-      "[01/01/25, 12:22:44 AM] Patty Bouvier: Happy new year",
-      "[01/01/25, 12:23:01 AM] Selma Bouvier: Happy new year 🎆",
-      "[01/01/25, 9:14:55 AM] Jackie Bouvier: Happy New Year to all. Clancy made his French toast this morning. Starting the year right.",
-      "[01/01/25, 9:16:33 AM] Clancy Bouvier: Happy New Year 🥂",
-      "",
-      "[04/01/25, 8:02:11 AM] Marge Simpson: Quick question - does anyone know Bart's shoe size? He's outgrown everything over the break",
-      "[04/01/25, 8:44:33 AM] Jackie Bouvier: I think he was a 5 at Thanksgiving? But that was two months ago",
-      "[04/01/25, 9:01:22 AM] Marge Simpson: I'll measure him when he wakes up. He's still asleep. It's 9am.",
-      "[04/01/25, 9:03:01 AM] Homer Simpson: He goes to bed at 2am Marge",
-      "[04/01/25, 9:03:44 AM] Marge Simpson: I know Homer",
-      "[04/01/25, 3:15:22 PM] Marge Simpson: Bart's science project. He's been working on it all afternoon.",
-      "[04/01/25, 3:33:11 PM] Jackie Bouvier: Very impressive! What is it supposed to be?",
-      "[04/01/25, 3:45:44 PM] Marge Simpson: A volcano. It hasn't erupted yet but he's optimistic",
-      "[04/01/25, 4:02:33 PM] Clancy Bouvier: Ha! Good boy",
-      "[04/01/25, 7:28:11 PM] Selma Bouvier: Did it ever go off",
-      "[04/01/25, 7:31:55 PM] Marge Simpson: It did. The kitchen is fine.",
-      "",
-      "[09/01/25, 11:14:33 AM] Marge Simpson: Lisa got 100 on her math test",
-      "[09/01/25, 11:22:01 AM] Jackie Bouvier: Of course she did!! 🌟 That's our girl",
-      "[09/01/25, 11:23:44 AM] Clancy Bouvier: Wonderful",
-      "[09/01/25, 12:03:11 PM] Selma Bouvier: Takes after Marge",
-      "[09/01/25, 12:04:33 PM] Homer Simpson: She takes after both of us Selma",
-      "[09/01/25, 12:05:01 PM] Selma Bouvier: Mm",
-      "[09/01/25, 12:06:01 PM] Marge Simpson: She made us sign it and put it on the fridge herself",
-      "",
-      "[17/01/25, 6:44:22 PM] Marge Simpson: Mom - what time do you want us Sunday? Homer's making pot roast",
-      "[17/01/25, 6:55:11 PM] Jackie Bouvier: 1 o'clock is fine. How many are you?",
-      "[17/01/25, 6:56:33 PM] Marge Simpson: Us four. Bart has a thing in the morning but he'll be back",
-      "[17/01/25, 6:57:01 PM] Jackie Bouvier: And Homer will eat for three so I'll make extra potatoes",
-      "[17/01/25, 6:57:44 PM] Homer Simpson: I appreciate that Jackie genuinely",
-      "[17/01/25, 6:58:22 PM] Jackie Bouvier: 😄",
-      "",
-      "[28/01/25, 8:55:33 AM] Marge Simpson: Maggie slept through the night 🎉",
-      "[28/01/25, 8:57:44 AM] Jackie Bouvier: Finally!! How many nights has it been?",
-      "[28/01/25, 8:58:22 AM] Marge Simpson: We don't talk about it",
-      "[28/01/
+    /* Ellipsis: cycle . → .. → ... every 500 ms, fixed-width span keeps label stable */
+    var DOTS = ['.', '..', '...'];
+    var tick = 0;
+    function stepEllipsis() {
+      var text = DOTS[tick % 3];
+      document.querySelectorAll('.ellipsis').forEach(function (el) { el.textContent = text; });
+      tick++;
+    }
+    stepEllipsis();
+    setInterval(stepEllipsis, 500);
+
+    /* Loading sequence: screen 1 → screen 2 → both hidden */
+    var s1 = document.getElementById('screen-1');
+    var s2 = document.getElementById('screen-2');
+
+    setTimeout(function () {
+      s1.classList.add('screen--hidden');
+      s2.classList.remove('screen--hidden');
+    }, 1500);
+
+    setTimeout(function () {
+      s2.classList.add('screen--hidden');
+    }, 3000);
+  </script>
+
+</body>
+</html>
