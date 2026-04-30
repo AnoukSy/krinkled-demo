@@ -389,3 +389,65 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     transition: none;
   }
 }
+
+/* ============================================================
+   Demo screen — Figma-accurate overrides
+   (appended; cascade takes these over the earlier block above)
+   ============================================================ */
+
+/* Figma: white background, not the cream --bg */
+.screen--demo {
+  background: var(--white);
+}
+
+/* Mobile preview: bare rounded card — no border, no shadow, 216 px tall */
+.demo-preview-frame {
+  border: none;
+  box-shadow: none;
+  aspect-ratio: unset;
+  height: 216px;
+}
+
+/* CTA footer — fixed to viewport bottom on mobile */
+.demo-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  padding: var(--sp-sm) var(--sp-md) var(--sp-md); /* 8 px 16 px 16 px */
+  z-index: 20;
+}
+
+/* Push scrollable content above the fixed footer (~72 px tall) */
+.demo-main {
+  padding-bottom: 80px;
+}
+
+/* ≥ 700 px ─────────────────────────────────────────────────── */
+@media (min-width: 700px) {
+
+  /* Figma desktop nav: 40 px top padding (was 32 px) */
+  .demo-nav {
+    padding-top: 40px;
+  }
+
+  /* Desktop preview: 384 px, dashed green border, green-dim bg tint */
+  .demo-preview-frame {
+    height: 384px;
+    border: 2px dashed var(--green);
+    background: rgba(7, 141, 70, 0.2);
+    box-shadow: none;
+  }
+
+  /* Footer returns to normal document flow on desktop */
+  .demo-footer {
+    position: static;
+    padding: 0;
+  }
+
+  /* Restore standard bottom padding (no fixed-footer clearance needed) */
+  .demo-main {
+    padding-bottom: var(--sp-xl);
+  }
+}
